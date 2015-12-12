@@ -15,11 +15,11 @@ date: December 2015
 ^* *Okay, maybe not, but a little literary license makes for a better story.*
 
 ========================================================  
-**...when in 1891** the eminent statistician Karl Pearson first used the term histogram it was an instant hit. Its popularity is easy to see: Simple to compute and straight-forward to interpret. The man had a true winner.  
+**...when in 1891,** the eminent statistician Karl Pearson first used the term histogram it was an instant hit. Its popularity is easy to see: Simple to compute and straight-forward to interpret. The man had a true winner.  
 
-Since then, this simple plot has likely been the most used graphical technique ever developed. But hidden in plain sight is the histogram's dirty little secret: **the bin-width selection can alter the histograms shape**. All histograms have to have a bin-width. Specified manually, it is typically a round number that feels right to the analyst. A program created histogram, by contrast, likely calculates the range of the data and then divides that by a default number of bins that seem reasonable to the programmer.  
+Since then, this simple plot has likely been the most used graphical technique ever developed. But hidden in plain sight is the histogram's secret: **the bin-width selection can alter the histograms shape**. All histograms have to have a bin-width. Specified manually, it is typically a round number that feels right to the analyst. A program created histogram, by contrast, likely calculates the range of the data and then divides that by a default number of bins that seem reasonable to the programmer.  
 
-**Key point:** both approaches are arbitrary and can lead to incorrect conclusions. Quelle horreur!
+**Key point:** Both approaches are arbitrary and can lead to incorrect conclusions. Quelle horreur!
 
 **What to do, what to do?...**
 
@@ -27,7 +27,7 @@ Since then, this simple plot has likely been the most used graphical technique e
 ========================================================
 **Time marches on...**with countless histograms produced one is left to wonder how many showed misinterpreted distributions? What bad decisions were made? Then, out of the darkness of WWII comes the development of the digital computer and with that the freedom to perform complex calculations. One of these calculations is the Kernel Density Function (**KDF**) which does away with the bin-width, but like the histogram, produces easy-to-interpret distribution graphics.  
 
-So, here we are in the 1950's and the solution is known, but with few exceptions, analysts do not have access to the giant computers required for these types of calculations. And so life goes on, little changed from that day in 1891.  
+So, here we are in the 1950's with the solution known, but except for a few exceptions, analysts do not have access to the giant computers required for these types of calculations. And so life goes on, little changed from that day in 1891.  
 
 **...and on** to the present day where all analysts have access to computers and software that calculates the **KDF** in the blink-of-an-eye. Pas plus d'excuses.
 
