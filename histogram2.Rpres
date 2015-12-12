@@ -1,0 +1,76 @@
+```{r echo= FALSE}
+library(ggplot2)
+library(Cairo)   # For nicer ggplot2 output when deployed on Linux
+library(ggthemes)
+load('/Users/tedkahn/Dropbox/R/histogram2/batting.rda')
+```
+
+Histograms: The Untold Story
+========================================================
+author: Theodore Kahn
+date: December 2015
+
+**It was a dark and stormy night^* ...**
+---
+^* *Okay, maybe not, but a little literary license makes for a better story.*
+
+========================================================  
+**...when in 1891** the eminent statistician Karl Pearson first used the term histogram it was an instant hit. Its popularity is easy to see: Simple to compute and straight-forward to interpret. The man had a true winner.  
+
+Since then, this simple plot has likely been the most used graphical technique ever developed. But hidden in plain sight is the histogram's dirty little secret: **the bin-width selection can alter the histograms shape**. All histograms have to have a bin-width. Specified manually, it is typically a round number that feels right to the analyst. A program created histogram, by contrast, likely calculates the range of the data and then divides that by a default number of bins that seem reasonable to the programmer.  
+
+**Key point:** both approaches are arbitrary and can lead to incorrect conclusions. Quelle horreur!
+
+**What to do, what to do?...**
+
+
+========================================================
+**Time marches on...**with countless histograms produced one is left to wonder how many showed misinterpreted distributions? What bad decisions were made? Then, out of the darkness of WWII comes the development of the digital computer and with that the freedom to perform complex calculations. One of these calculations is the Kernel Density Function (**KDF**) which does away with the bin-width, but like the histogram, produces easy-to-interpret distribution graphics.  
+
+So, here we are in the 1950's and the solution is known, but with few exceptions, analysts do not have access to the giant computers required for these types of calculations. And so life goes on, little changed from that day in 1891.  
+
+**...and on** to the present day where all analysts have access to computers and software that calculates the **KDF** in the blink-of-an-eye. Pas plus d'excuses.
+
+
+========================================================
+Here we have two histograms of the same data and different bin-widths with the **KDF** overlayed. The left histogram indicates a possible normal distribution and the right has characteristics perhaps indicating a uniform distribution.
+
+```{r echo=FALSE, fig.width= 6, fig.height= 5.5}
+xLabel= 'Number of at-bats for the 2002 US baseball5.5season.'
+bin <- 170
+ggplot(myData, aes(x= myData$AtBatts, ..density..)) + 
+geom_histogram(binwidth= bin, color= 'black', fill= 'lightblue') + 
+     geom_density(fill= NA, color= 'red', size= 1.25) +
+     labs(x= xLabel) +
+     theme_classic()
+bin <- 80
+ggplot(myData, aes(x= myData$AtBatts, ..density..)) + 
+geom_histogram(binwidth= bin, color= 'black', fill= 'lightblue') + 
+     geom_density(fill= NA, color= 'red', size= 1.25) +
+     labs(x= xLabel) +
+     theme_classic()
+```
+  
+But which is right? (Yep, it's a trick question.)  
+
+
+========================================================
+And, yes, still two more histograms with different bin-widths.  
+```{r echo=FALSE, fig.width= 6, fig.height= 5.5}
+xLabel= 'Number of at-bats for the 2002 US baseball season.'
+bin <- 50
+ggplot(myData, aes(x= myData$AtBatts, ..density..)) + 
+geom_histogram(binwidth= bin, color= 'black', fill= 'lightblue') + 
+     geom_density(fill= NA, color= 'red', size= 1.25) +
+     labs(x= xLabel) +
+     theme_classic()
+bin <- 25
+ggplot(myData, aes(x= myData$AtBatts, ..density..)) + 
+geom_histogram(binwidth= bin, color= 'black', fill= 'lightblue') + 
+     geom_density(fill= NA, color= 'red', size= 1.25) +
+     labs(x= xLabel) +
+     theme_classic()
+```  
+  
+This distribution is probably best characterised as being bimodal, which is what the **KDF** has been saying all along. For further information and an interactive application see:  
+https://tedkahn.shinyapps.io/histogram
